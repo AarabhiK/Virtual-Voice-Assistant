@@ -90,7 +90,7 @@ if __name__=='__main__':
             time.sleep(5)
             
         elif "weather" in statement:
-            api_key="8ef61edcf1c576d65d836254e11ea420"
+            api_key="b6fd38be9117543a1821a78ecdab631e"
             base_url="https://api.openweathermap.org/data/2.5/weather?"
             speak("whats the city name")
             city_name=takeCommand()
@@ -155,18 +155,8 @@ if __name__=='__main__':
             speak("I was built by Aarabhi")
             print("I was built by Aarabhi")
                                            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
-            
+        elif "log off" in statement or "sign out" in statement:
+            speak("Ok , your pc will log off in 10 sec make sure you exit from all applications")
+            subprocess.call(["shutdown", "/l"])
+			
+time.sleep(3)                               
