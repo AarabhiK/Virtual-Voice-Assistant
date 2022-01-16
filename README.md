@@ -1,2 +1,2 @@
 # Virtual-Voice-Assistant
-A virtual assisatant.
+A virtual voice assistant. 
