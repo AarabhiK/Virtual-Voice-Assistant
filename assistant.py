@@ -1,20 +1,17 @@
 import speech_recognition as sr
 import pyttsx3
-import datetime
 import wikipedia
+import datetime
 import webbrowser
-import os
 import time
-import subprocess
-from ecapture import ecapture as ec
 import wolframalpha
-import json
 import requests
+import random
 
-print("Loading your personal AI assistant")
+print("Loading your personal AI assistant Google wannabe")
 
-engine=pyttsx3.init('sapi5')
-voices=engine.getProperty('voices')
+engine = pyttsx3.init('sapi5')
+voices = engine.getProperty('voices')
 engine.setProperty('voice','voices[1].id')
 
 def speak(text):
@@ -33,6 +30,15 @@ def wishMe():
         speak("Hello,Good Evening")
         print("Hello,Good Evening")
 
+def greeting(text):
+    Greeting_Inputs = ['hi', 'hey', 'hola', 'bonjour', 'hello']
+    Greeting_Response = ['hi', 'hey', 'hola', 'greetings', 'bonjour', 'hello']
+
+    for word in text.split():
+        if word.lower() in Greeting_Inputs:
+            return random.choice(Greeting_Response)
+    return ''
+
 def takeCommand():
     r=sr.Recognizer()
     with sr.Microphone() as source:
@@ -48,8 +54,18 @@ def takeCommand():
             return "None"
         return statement
 
-print("Loading your AI personal assistant G-One")
-speak("Loading your AI personal assistant G-One")
+def wakeWord(text):
+    WAKE_WORD = ['Hey Google wannabe']
+
+    text = text.lower()
+
+    for phrase in WAKE_WORD:
+        if phrase in text:
+            return True
+    return False
+
+print("Loading your AI personal assistant Google wannabe")
+speak("Loading your AI personal assistant Google wannabe")
 wishMe()
 
 if __name__=='__main__':
@@ -61,9 +77,9 @@ if __name__=='__main__':
         if statement==0:
             continue
             
-        if "good bye" in statement or "ok bye" in statement or "stop" in statement:
-            speak('your personal assistant G-one is shutting down,Good bye')
-            print('your personal assistant G-one is shutting down,Good bye')
+        if "good bye" in statement or "okay bye" in statement or "stop" in statement:
+            speak('your personal assistant Google wannabe is shutting down, Good bye')
+            print('your personal assistant Google wannabe is shutting down, Good bye')
             break
             
         if 'wikipedia' in statement:
@@ -75,7 +91,7 @@ if __name__=='__main__':
             speak(results)
 
         elif 'open youtube' in statement:
-            webbrowser.open_new_tab("https://www.youtube.com")
+            webbrowser.open_new_tab("https://www.youtube.ca")
             speak("youtube is open now")
             time.sleep(5)
 
@@ -85,7 +101,7 @@ if __name__=='__main__':
             time.sleep(5)
 
         elif 'open gmail' in statement:
-            webbrowser.open_new_tab("gmail.com")
+            webbrowser.open_new_tab("https://www.gmail.com")
             speak("Google Mail open now")
             time.sleep(5)
             
@@ -124,20 +140,17 @@ if __name__=='__main__':
             speak(f"the time is {strTime}")
             
         elif 'news' in statement:
-            news = webbrowser.open_new_tab("https://www.cbc.ca/news”)
+            news = webbrowser.open_new_tab("https://www.cbc.ca/news")
             speak('Here are some headlines from CBC, Canadian Broadcasting Corporation news, Happy reading!')
             time.sleep(6)
-
-        elif "camera" in statement or "take a photo" in statement or "take a pic" in statement or "take a picture" in statement:
-            ec.capture(0,"robo camera","img.jpg")
                                            
-        elif 'search'  in statement:
+        elif 'search' in statement:
             statement = statement.replace("search", "")
             webbrowser.open_new_tab(statement)
             time.sleep(5)
                                            
         elif 'ask' in statement:
-            speak('I can answer to computational and geographical questions  and what question do you want to ask now')
+            speak('I can answer to computational and geographical questions. What question do you want to ask now')
             question=takeCommand()
             app_id="VU3QA5-XWU5WYYL6G"
             client = wolframalpha.Client('R2K75H-7ELALHR35X')
@@ -154,9 +167,5 @@ if __name__=='__main__':
         elif "who made you" in statement or "who created you" in statement or "who discovered you" in statement:
             speak("I was built by Aarabhi")
             print("I was built by Aarabhi")
-                                           
-        elif "log off" in statement or "sign out" in statement:
-            speak("Ok , your pc will log off in 10 sec make sure you exit from all applications")
-            subprocess.call(["shutdown", "/l"])
 			
 time.sleep(3)                               
