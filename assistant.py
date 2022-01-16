@@ -161,7 +161,7 @@ if __name__=='__main__':
                                         
         elif 'who are you' in statement or 'what can you do' in statement:
             speak('I am your personal assistant. I am programmed to do tasks like'
-                  'opening youtube, google chrome, gmail, tell the time, take a photo, search wikipedia, and even predict weather in different cities.' 
+                  'opening youtube, google chrome, gmail, tell the time, search wikipedia, and even predict weather in different cities.' 
                   'I can also get top headline news from CBC news Canada. You can ask me computational or geographical questions too! Let me know how I can help.')
 
         elif "who made you" in statement or "who created you" in statement or "who discovered you" in statement:
